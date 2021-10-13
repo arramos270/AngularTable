@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface Alumno {
   nombre: string;
   apellidos: string;
   edad: number;
   curso: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
+
+const ELEMENT_DATA: Alumno[] = [
   {nombre: 'Juan', apellidos: 'Gómez Fernández', edad: 18, curso: '1ºDAM'},
   {nombre: 'Juan', apellidos: 'Gómez Fernández', edad: 19, curso: '1ºDAM'},
   {nombre: 'Juan', apellidos: 'Gómez Fernández', edad: 25, curso: '2ºDAM'},
@@ -22,15 +25,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'apellidos', 'edad', 'curso', 'acciones'];
-  dataSource = ELEMENT_DATA;
+export class TableComponent implements AfterViewInit{
+  displayedColumns: string[] = ['nombre', 'apellidos', 'edad', 'curso'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   
-  constructor() { }
+  @ViewChild(MatSort) sort: MatSort;
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
-
 }

@@ -1,4 +1,7 @@
 table {
-    width: 80%;
-    align-items: center;
-  }
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
