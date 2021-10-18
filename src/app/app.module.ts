@@ -4,11 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomToolbarComponent } from './custom-toolbar/custom-toolbar.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
-import { TableComponent } from './table/table.component';
+import { CustomTableComponent } from './custom-table/custom-table.component';
+import { MaterialImportsModule } from './material-imports.module';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -16,15 +15,14 @@ import { TableComponent } from './table/table.component';
   declarations: [
     AppComponent,
     CustomToolbarComponent,
-    TableComponent
+    CustomTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatIconModule,
-    BrowserAnimationsModule,
-    MatTableModule
+    MaterialImportsModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
